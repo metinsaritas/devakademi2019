@@ -18,9 +18,9 @@ Fullstack veri listeleme.  Verilen data; backend, frontend kısımları yazılı
 - Docker
 - Docker-compose
 
-`$ git clone https://gitlab.com/dev.akademi19/metinsaritas/metinsaritas-devakademi2019.git`
+`$ git clone https://github.com/metinsaritas/devakademi2019`
 
-`$ cd metinsaritas-devakademi2019/server`
+`$ cd devakademi2019/server`
 `$ yarn install`
 
 `$ cd ../client`
