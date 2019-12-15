@@ -1,0 +1,24 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node .",
+    "dev": "nodemon --legacy-watch ."
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.9.6",
+    "colour": "^0.7.1",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "graphql": "^14.5.8",
+    "mongoose": "^5.7.5",
+    "morgan": "^1.9.1",
+    "redis": "^2.8.0",
+    "saslprep": "^1.0.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
+  }
+}

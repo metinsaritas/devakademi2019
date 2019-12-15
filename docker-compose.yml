@@ -1,0 +1,70 @@
+version: '2'
+
+services:
+  backend:
+    image: node:carbon-alpine
+    volumes:
+      - ./server/:/opt/server
+    working_dir: /opt/server
+    command: 'npm start'
+    #command: 'npm run dev'
+    restart: always
+    env_file: ./docker/backend.env
+    ports:
+      - 8080:8080
+    networks: 
+      backside:
+      frontside:
+
+  db: 
+    image: mongo
+    restart: always
+    expose:
+      - "27017"
+    env_file: ./docker/mongodb.env
+    volumes:
+      - ./docker/mongo-init.js:/docker-entrypoint-initdb.d/x.js:ro
+    networks: 
+      backside:
+        aliases: 
+          - db
+          - mongo
+          
+  # Don't up it when production mode
+  dbui: 
+    image: mongo-express
+    restart: always
+    ports: 
+      - 8081:8081
+    env_file: ./docker/dbui.env
+    networks: 
+      backside:
+
+  redis:
+    image: redis
+    restart: always
+    expose: 
+      - "6379"
+    networks: 
+      backside: 
+        aliases: 
+          - redis
+
+  # Kill frontend container when developing, use it in host instead.
+  # Because it won't reload js files when it changed 
+  frontend:
+    image: node:carbon-alpine
+    restart: always
+    volumes: 
+      - ./client/:/opt/client
+    working_dir: /opt/client
+    command: 'npm start'
+    ports: 
+      - 80:3000
+    networks: 
+      frontside:
+      backside:
+
+networks:
+  backside:
+  frontside:
