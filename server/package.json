@@ -8,7 +8,7 @@
     "dev": "nodemon --legacy-watch ."
   },
   "dependencies": {
-    "apollo-server-express": "^2.9.6",
+    "apollo-server-express": "^2.14.2",
     "colour": "^0.7.1",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
